@@ -4,6 +4,7 @@
       <a href="#" class="logo text-lg">
         Nuxt Fundementals
       </a>
+      <span class="subheaer">A Vue School course</span>
     </div>
   </nav>
 </template>
