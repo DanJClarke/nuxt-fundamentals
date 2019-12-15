@@ -9,20 +9,13 @@
         A fabulous nuxt project
       </h2>
       <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+        <nuxt-link
+          v-for="post in posts":to="{name: 'posts-id', params: {id: post.id}}"
+          :key="post.id"
+          class="button--grey">
+          {{ post.title}}
+
+        </nuxt-link>
       </div>
     </div>
   </div>
@@ -34,6 +27,24 @@ import Logo from '~/components/Logo.vue'
 export default {
   components: {
     Logo
+  },
+
+  computed:{
+    posts(){
+        return this.$store.state.posts.all;
+    }
+  },
+
+  head(){
+    return{
+      title:'Home page',
+       meta:[
+        {name:'twitter:title', conent: 'Nuxt Fundementals by Vue School'},
+        {name:'twitter:description', conent: 'Nuxt + Vue School = pizza'},
+        {name:'twitter:image', conent: 'https//i.imgur.com/UYP2unJ.png:'},
+         {name:'twitter:card', conent: 'summary_large_image'},
+      ]
+    }
   }
 }
 </script>
